@@ -1,19 +1,33 @@
-<%- include('partial/header',arg=["/", "#"]) -%>
+<%- include('partial/header',arg=["/", "#","form"]) -%>
 <h1>list of students here</h1>
-<div class="container">
-    <div class="row">
-        <% pm.forEach((item)=>{ %>
-        <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="<%=item.profile_pic%>" alt="Card image cap" height="200px">
-            <div class="card-body">
-                <h5 class="card-title"><%=item.name%></h5>
-                <p class="card-text">Email: <%=item.email%><br>Phone: <%=item.phone%><br>Degree: <%=item.degree%><br>
-                </p>
-                <a href="profile?id=<%=item.id%>" class="btn btn-primary">Edit</a>
+<div id="list">
+    <div class="container">
+        <div class="row">
+            <% pm.forEach((item)=>{ %>
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top" src="<%=item.profile_pic%>" alt="Card image cap" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title"><%=item.name%></h5>
+                    <p class="card-text">Email: <%=item.email%><br>Phone: <%=item.phone%><br>Degree:
+                        <%=item.degree%><br>
+                    </p>
+                    <a href="profile?id=<%=item.id%>" class="btn btn-primary">Edit</a>
+                </div>
             </div>
-        </div>
 
-        <% })  %>
+            <% })  %>
+        </div>
     </div>
 </div>
+<script>
+    function eliminate() {
+        console.log('hi')
+        $(document).ready(function () {
+                var value = $('#nameOfStudent').val().toLowerCase();
+                $("#list .card-title").filter(function () {
+                    $(this).parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    }
+</script>
 <%- include('partial/footer') -%>

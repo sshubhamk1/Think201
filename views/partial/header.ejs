@@ -2,30 +2,36 @@
 <html lang="en">
 
 <head>
-    <title>Homepage</title>
+  <title>Homepage</title>
 
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item <% if(arg[0]== '#'){ %> active <% } %>">
-              <a class="nav-link" href="<%=arg[0]%>">Home </a>
-            </li>
-            <li class="nav-item  <% if(arg[1]== '#'){ %> active <% } %>">
-              <a class="nav-link" href="<%=arg[1]%>">Show student </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item <% if(arg[0]== '#'){ %> active <% } %>">
+          <a class="nav-link" href="<%=arg[0]%>">Home </a>
+        </li>
+        <li class="nav-item  <% if(arg[1]== '#'){ %> active <% } %>">
+          <a class="nav-link" href="<%=arg[1]%>">Show student </a>
+        </li>
+      </ul>
+      <% if (arg.length > 2){ %>
+      <form action="#" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2 float-right" id="nameOfStudent" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 float-right" onclick="eliminate();return false;" type="submit">Search</button>
+      </form>
+      <% } %>
+    </div>
+  </nav>
