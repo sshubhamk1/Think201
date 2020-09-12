@@ -1,0 +1,36 @@
+<%- include('partial/header', arg= ["#", "list"]) -%>
+<div class="container">
+    <div class="row">
+        <form action="addData" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nameOfStudent">Name<span class="required"> *</span></label>
+                <input type="text" class="form-control" id="nameOfStudent" name="name" placeholder="Enter name"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address<span class="required"> *</span></label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="phoneOfStudent">Phone Number<span class="required"> *</span></label>
+                <input type="phone" name="phone" class="form-control" id="phoneOfStudent" placeholder="phone number"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="degreeOfStudent">Degree<span class="required"> *</span></label>
+                <input type="text" name="degree" class="form-control" id="degreeOfStudent" placeholder="Enter Degree"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Photo<span class="required"> *</span></label>
+                <input type="file" name="profilePic" class="form-control-file" id="exampleFormControlFile1" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+
+    </div>
+</div>
+
+<%- include('partial/footer') -%>
