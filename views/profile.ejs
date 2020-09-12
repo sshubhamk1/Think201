@@ -1,0 +1,26 @@
+<%- include('partial/header',arg=["/","list"]) -%>
+<h1>student profile goes here</h1>
+<div class="container">
+    <div class="row">
+        <form action="updateData" method="POST" enctype="multipart/form-data">
+            <div class="card" style="width: 22rem;">
+                <img class="card-img-top" src="<%=data.profile_pic%>" alt="Card image cap" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title">Name: <input type="text" name="name" value="<%=data.name%>"></h5>
+                    <p class="card-text">Email: <input type="email" name="email" value="<%=data.email%>"> <br>
+                        Phone: <input type="phone" name="phone" value="<%=data.phone%>"><br>
+                        Degree:<input type="text" name="degree" value="<%=data.degree%>"><br>
+                        <input type="hidden" value="<%=data.id%>" name="id">
+                        <input type="hidden" value="<%=data.profile_pic%>" name="old_pic">
+                        <input type="file" name="profilePic">
+                    </p>
+                    <button type="submit" class="btn btn-danger">Update Details</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<%- include('partial/footer') -%>
