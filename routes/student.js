@@ -12,23 +12,16 @@ let storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if(!req.body.name || !req.body.email || !req.body.phone  || !req.body.degree)
         {
-            //return cb(new Error("All data not given properly"),false)
-            console.log(req.body.name)
-            console.log(req.body.email)
-            console.log(req.body.phone)
-            console.log(req.body.degree)
             
-            return cb("form data is missing some things");
+            return res.render("error", msg="form data is missing some things");
         }else if(file.mimetype.substring(0,5)!="image"){
-            //return cb(new Error("Uploading data is not an image"))
-            return cb("please upload images only")
+            return res.render("error",msg="please upload images only")
         }else{
 
         cb(null, 'uploads/')
         }
     },
     filename: function (req, file, cb) {
-        console.log(req.body)
         cb(null, Date.now() + path.extname(file.originalname))
     },
     onError: (err,next)=>{
@@ -50,7 +43,7 @@ router.get('/list', (req, res) => {
         db.all(sql,[],(err,rows)=>{
             if(err)
             {
-                res.send("<h1>something went wrong</h1>");
+                res.render("error",msg="something went wrong");
             }else {
                 res.render("list", pm = rows)
             }
@@ -103,7 +96,7 @@ router.post("/addData",upload.single('profilePic'),  (req, res) => {
          VALUES(?,?,?,?,?)',[req.body.name,req.body.email, req.body.phone,req.body.degree,req.file.filename],(err)=>{
              if(err)
              {
-                console.log("sqlite error" + err.message)
+                res.render("error", msg="sqlite error")
              }
          });
     })
